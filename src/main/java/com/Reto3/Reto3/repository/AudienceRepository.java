@@ -32,5 +32,5 @@ public class AudienceRepository {
     }
     public void delete(Audience audience){
         audienceCrudRepository.delete(audience);
-    }        
+    }
 }

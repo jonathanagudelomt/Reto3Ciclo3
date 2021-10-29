@@ -57,8 +57,8 @@ public class AudienceService {
                 if(audience.getCapacity()!=null){
                     guardar.get().setCapacity(audience.getCapacity());
                 }
-                if(audience.getCategory()!=null){
-                    guardar.get().setCategory(audience.getCategory());
+                if(audience.getDescription()!=null){
+                    guardar.get().setDescription(audience.getDescription());
                 }
                 return audienceRepository.save(guardar.get());
             }

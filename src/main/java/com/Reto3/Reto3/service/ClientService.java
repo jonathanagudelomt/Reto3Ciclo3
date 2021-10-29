@@ -45,8 +45,7 @@ public class ClientService {
             Optional<Client>guardar=clientRepository.getClient(client.getIdClient());
             if(!guardar.isEmpty()){
                 if(client.getName()!=null){
-                    guardar.get().setName(client.getName());
-                 
+                    guardar.get().setName(client.getName());                 
                 }
                 if(client.getAge()!=null){
                     guardar.get().setAge(client.getAge());

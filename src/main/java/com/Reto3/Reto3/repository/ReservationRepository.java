@@ -4,8 +4,12 @@
  */
 package com.Reto3.Reto3.repository;
 
+import com.Reto3.Reto3.model.Client;
 import com.Reto3.Reto3.model.Reservation;
+import com.Reto3.Reto3.reportes.ContadorClientes;
 import com.Reto3.Reto3.repository.crud.ReservationCrudRepository;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +35,19 @@ public class ReservationRepository {
     }
     public void delete(Reservation reservation){
         reservationCrudRepository.delete(reservation);
-    }   
+    }
+    public List<Reservation> ReservationStatus(String status){
+        return reservationCrudRepository.findAllByStatus(status);
+    }
+    public List<Reservation> ReservacionTiempo(Date one, Date two){
+        return reservationCrudRepository.findAllByStartDateAfterAndStartDateBefore(one, two);
+    }
+    public List<ContadorClientes> getTopClientes(){
+        List <ContadorClientes> res=new ArrayList<>();
+        List<Object[]>report=reservationCrudRepository.countTotalReservationByClient();
+        for(int i=0; i<report.size();i++){
+            res.add(new ContadorClientes((Long)report.get(i)[1],(Client)report.get(i)[0]));
+        }
+        return res;
+    }
 }

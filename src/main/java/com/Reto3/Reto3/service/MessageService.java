@@ -45,8 +45,7 @@ public class MessageService {
             Optional<Message>guardar=messageRepository.getMessage(message.getIdMessage());
             if(!guardar.isEmpty()){
                 if(message.getMessageText()!=null){
-                    guardar.get().setMessageText(message.getMessageText());
-                 
+                    guardar.get().setMessageText(message.getMessageText());                
                 }
                 return messageRepository.save(guardar.get());
             }
